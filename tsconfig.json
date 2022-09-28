@@ -1,0 +1,26 @@
+// prettier-ignore
+{
+  "extends": "@tsconfig/react-native/tsconfig.json",     /* Recommended React Native TSConfig base */
+  "compilerOptions": {
+    /* Visit https://aka.ms/tsconfig.json to read more about this file */
+    "module": "es2015",
+    "strict": true,
+    "baseUrl": ".",
+    "skipLibCheck": true,
+    "paths": {
+      "@comps" : [ "src/components" ] ,
+      "@pages/*" : [ "src/pages/*" ] ,
+      "@routes" : [ "src/routes.ts" ] ,
+      "@kit": ["src/kit"],
+      "@http/*": ["src/http/*"],
+      "@img": ["src/images"],
+      "@config": ["src/config"],
+      "@config/*": ["src/config/*"],
+      "@store" : [ "src/store" ],
+      "@type" : [ "src/config/types" ]
+    },
+    "typeRoots": [
+      "./typings"
+    ]
+  }
+}
