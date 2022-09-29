@@ -3,7 +3,7 @@ import { View } from 'react-native'
 import React, { useEffect, useMemo, useState } from 'react'
 import { NavigationContainer } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack'
-import { getCommonInfo, isValidPage, useQueryParams } from '@kit'
+import { getCommonInfo, isValidPage, useQueryParams, exceptionCatch } from '@kit'
 import { UrlProps } from '@type'
 import { RoutesEnum } from '@routes'
 import { name as appName } from '../app.json'
@@ -16,6 +16,10 @@ import { screen } from '@config/screen'
 import UnKnowPage from '@pages/unknow-page'
 import UserSetting from '@pages/user-settting'
 import Waterfall from '@pages/waterfall-list'
+
+if (!__DEV__) {
+  exceptionCatch()
+}
 
 /**
  * 页面入口

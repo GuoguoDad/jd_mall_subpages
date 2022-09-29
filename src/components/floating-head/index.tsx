@@ -9,7 +9,6 @@ import {
   TextProps,
   StatusBarStyle
 } from 'react-native'
-import { NavigationInjectedProps } from 'react-navigation'
 import { isAndroid, rnBack, px2Dp, HeaderThemeEnum, screenWidth } from '@kit'
 import { backWhite, backBlack } from '@img'
 import { common } from '@config/common'
@@ -88,9 +87,9 @@ class FloatingHeader extends React.Component<FloatingHeaderProps, FloatingHeader
   }
 
   _backHandler = () => {
-    const { navigation, onBack = () => {} } = this.props
-    onBack()
-    rnBack(navigation)
+    // const { navigation, onBack = () => {} } = this.props
+    // onBack()
+    // rnBack(navigation)
     return false
   }
 }
@@ -104,7 +103,7 @@ export type FloatingHeaderProps = {
   titleStyle?: TextProps['style']
   headerTheme: HeaderThemeEnum
   renderRight?: React.ReactNode
-} & NavigationInjectedProps
+}
 
 export type FloatingHeaderState = {
   title: string

@@ -1,7 +1,7 @@
 import React from 'react'
 import { ScrollView, StyleSheet, View, Text, TouchableOpacity } from 'react-native'
 import { getBottomSpace } from 'react-native-iphone-x-helper'
-import { useNavigation, CommonActions } from '@react-navigation/native'
+import { useNavigation, StackActions } from '@react-navigation/native'
 import { Scene, FastImg } from '@comps'
 import { default_goods_img, arrowRight } from '@img'
 import { isIOS, px2Dp } from '@kit'
@@ -26,13 +26,7 @@ const UserSetting = () => {
         <SettingItem
           title="地址管理"
           description={''}
-          onPress={() =>
-            navigation.dispatch(
-              CommonActions.navigate({
-                name: RoutesEnum.Waterfall
-              })
-            )
-          }
+          onPress={() => navigation.dispatch(StackActions.push(RoutesEnum.Waterfall))}
         />
         <View style={styles.greySpace} />
         <SettingItem title="账户与安全" description={'账户保障可升级'} />
