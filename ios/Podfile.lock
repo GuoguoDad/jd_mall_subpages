@@ -380,8 +380,9 @@ PODS:
     - React-Core
   - RNGestureHandler (2.6.2):
     - React-Core
-  - RNScreens (1.0.0-alpha.23):
-    - React
+  - RNScreens (3.17.0):
+    - React-Core
+    - React-RCTImage
   - SocketRocket (0.6.0)
   - Yoga (1.14.0)
   - YogaKit (1.18.1):
@@ -602,7 +603,7 @@ SPEC CHECKSUMS:
   ReactCommon: 7f86326b92009925c6dcf93f8e825060171c379f
   RNCPicker: 0b65be85fe7954fbb2062ef079e3d1cde252d888
   RNGestureHandler: 4defbd70b2faf3d6761b82fa7880285241762cb0
-  RNScreens: f28b48b8345f2f5f39ed6195518291515032a788
+  RNScreens: 0df01424e9e0ed7827200d6ed1087ddd06c493f9
   SocketRocket: fccef3f9c5cedea1353a9ef6ada904fde10d6608
   Yoga: 6c8252e38d65aa387daee699eacf027e055e0b31
   YogaKit: f782866e155069a2cca2517aafea43200b01fd5a
