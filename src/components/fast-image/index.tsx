@@ -1,6 +1,6 @@
 import React from 'react'
-// import FastImage, { ImageStyle, Source } from 'react-native-fast-image'
-import { StyleProp, Image, ImageStyle } from 'react-native'
+import FastImage, { ImageStyle, Source } from 'react-native-fast-image'
+import { StyleProp } from 'react-native'
 import { httpToHttps } from '@kit'
 import { default_goods_img } from '@img'
 
@@ -23,10 +23,10 @@ class FastImg extends React.Component<FastImageProps, { url: string }> {
     const { url } = this.state
 
     return (
-      <Image
+      <FastImage
         source={{
           uri: httpToHttps(url || default_goods_img),
-          cache: 'force-cache'
+          priority
         }}
         onError={() => {
           this.setState({ url: default_goods_img })
@@ -40,9 +40,9 @@ class FastImg extends React.Component<FastImageProps, { url: string }> {
 
 export default FastImg
 
-// export const preload = (sources: Source[]) => {
-//   FastImage.preload(sources)
-// }
+export const preload = (sources: Source[]) => {
+  FastImage.preload(sources)
+}
 
 type FastImageProps = {
   url: string

@@ -43,7 +43,7 @@ export default function App(props: AppProps) {
 
   const PageList = useMemo(
     () => <Pages finalInitRouteName={finalInitRouteName} initParams={restProps} />,
-    [finalInitRouteName, restProps]
+    [finalInitRouteName]
   )
 
   if (!isReady) {
