@@ -22,7 +22,7 @@ const Waterfall = () => {
   const { from } = params
 
   console.log('=====from:', from)
-  console.log('=====params:', params)
+  // console.log('=====params:', params)
 
   const [isRefreshing, setRefreshing] = useState(false)
 

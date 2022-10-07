@@ -1,22 +1,18 @@
 import 'react-native-gesture-handler'
 import { View } from 'react-native'
-import React, { useEffect, useState } from 'react'
-import { NavigationContainer } from '@react-navigation/native'
-import { createStackNavigator } from '@react-navigation/stack'
+import React, { useEffect, useMemo, useState } from 'react'
 import { getCommonInfo, isValidPage, useQueryParams, exceptionCatch } from '@kit'
 import { common } from '@config/common'
 import { UrlProps } from '@type'
-import { RoutesEnum } from '@routes'
+import { RoutesEnum, Pages } from './pages'
 import { name as appName } from '../app.json'
-
-const Stack = createStackNavigator()
-
-import UnKnowPage from '@pages/unknow-page'
-import UserSetting from '@pages/user-settting'
-import Waterfall from '@pages/waterfall-list'
 
 if (!__DEV__) {
   exceptionCatch()
+}
+
+type AppProps = {
+  initRouteUrl: string
 }
 
 /**
@@ -26,7 +22,6 @@ if (!__DEV__) {
  */
 export default function App(props: AppProps) {
   const { initRouteUrl = `https://com.aries.com?pageCode=rn&bundleName=${appName}&initRouteName=UserSetting` } = props
-
   const [isReady, setIsReady] = useState<boolean>(false)
 
   //initRouteUrl 是打开页面的入口，由app菜单或者cms配置
@@ -46,21 +41,13 @@ export default function App(props: AppProps) {
     })
   }, [])
 
+  const PageList = useMemo(
+    () => <Pages finalInitRouteName={finalInitRouteName} initParams={restProps} />,
+    [finalInitRouteName, restProps]
+  )
+
   if (!isReady) {
     return <View />
   }
-
-  return (
-    <NavigationContainer>
-      <Stack.Navigator initialRouteName={finalInitRouteName} screenOptions={{ headerShown: false }}>
-        <Stack.Screen name={RoutesEnum.UnKnowPage} component={UnKnowPage} initialParams={restProps} />
-        <Stack.Screen name={RoutesEnum.UserSetting} component={UserSetting} initialParams={restProps} />
-        <Stack.Screen name={RoutesEnum.Waterfall} component={Waterfall} initialParams={restProps} />
-      </Stack.Navigator>
-    </NavigationContainer>
-  )
-}
-
-type AppProps = {
-  initRouteUrl: string
+  return PageList
 }

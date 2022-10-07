@@ -43,7 +43,7 @@ module.exports = {
           },
           {
             rootPathPrefix: '@params',
-            rootPathSuffix: './src/pages/params.ts'
+            rootPathSuffix: './src/pages/page-params'
           }
         ]
       }

@@ -7,7 +7,7 @@ import { default_goods_img, arrowRight } from '@img'
 import { isIOS, px2Dp } from '@kit'
 
 import SettingItem from '@pages/user-settting/components/item'
-import { RoutesEnum } from '@routes'
+import { RoutesEnum } from '../../pages'
 
 const UserSetting = () => {
   const navigation = useNavigation()
