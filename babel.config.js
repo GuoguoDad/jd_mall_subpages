@@ -40,6 +40,10 @@ module.exports = {
           {
             rootPathPrefix: '@http',
             rootPathSuffix: './src/http'
+          },
+          {
+            rootPathPrefix: '@params',
+            rootPathSuffix: './src/pages/params.ts'
           }
         ]
       }

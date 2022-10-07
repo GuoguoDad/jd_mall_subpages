@@ -26,7 +26,7 @@ const UserSetting = () => {
         <SettingItem
           title="地址管理"
           description={''}
-          onPress={() => navigation.dispatch(StackActions.push(RoutesEnum.Waterfall))}
+          onPress={() => navigation.dispatch(StackActions.push(RoutesEnum.Waterfall, { from: 'UserSetting' }))}
         />
         <View style={styles.greySpace} />
         <SettingItem title="账户与安全" description={'账户保障可升级'} />

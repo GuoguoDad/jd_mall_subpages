@@ -1,6 +1,8 @@
 import React, { PureComponent, useState } from 'react'
 import { StyleSheet, View, Text } from 'react-native'
+import { RouteProp, useRoute } from '@react-navigation/native'
 import { Scene, WaterfallList } from '@comps'
+import { PageParamList } from '@params'
 
 type IData = {
   id: string
@@ -16,6 +18,12 @@ const DATA: Array<IData> = Array.from({ length: 200 }).map((_, i) => ({
 }))
 
 const Waterfall = () => {
+  const { params } = useRoute<RouteProp<PageParamList, 'WaterFall'>>()
+  const { from } = params
+
+  console.log('=====from:', from)
+  console.log('=====params:', params)
+
   const [isRefreshing, setRefreshing] = useState(false)
 
   const _refreshRequest = () => {
@@ -41,10 +49,6 @@ const Waterfall = () => {
 }
 
 export default Waterfall
-
-type WaterfallState = {
-  isRefreshing: boolean
-}
 
 class Cell extends PureComponent<{ item: { id: string; height: number; color: string } }> {
   render() {

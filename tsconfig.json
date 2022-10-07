@@ -17,7 +17,8 @@
       "@config": ["src/config"],
       "@config/*": ["src/config/*"],
       "@store" : [ "src/store" ],
-      "@type" : [ "src/config/types" ]
+      "@type" : [ "src/config/types" ],
+      "@params" : [ "src/pages/params" ]
     },
     "typeRoots": [
       "./typings"
