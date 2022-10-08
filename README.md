@@ -55,6 +55,6 @@ npm run build
 ```
 
 # 配置规则
-1、设置页面: https://com.aries.com?pageCode=rn&bundleName=mall_page&initRouteName=UserSetting
+1、设置页面: https://com.aries.com?pageCode=rn&bundleName=app&initRouteName=UserSetting
 - 参数说明: bundleName(为后期多bundle留标识)
 
