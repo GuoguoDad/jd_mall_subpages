@@ -2,7 +2,7 @@ import React from 'react'
 import { ScrollView, StyleSheet, View, Text, TouchableOpacity } from 'react-native'
 import { getBottomSpace } from 'react-native-iphone-x-helper'
 import { useNavigation, StackActions } from '@react-navigation/native'
-import { Scene, FastImg } from '@comps'
+import { Scene, FastImg, Toast } from '@comps'
 import { default_goods_img, arrowRight } from '@img'
 import { isIOS, px2Dp } from '@kit'
 
@@ -18,7 +18,7 @@ const UserSetting = () => {
         <View style={[styles.row, styles.itemView]}>
           <FastImg url={default_goods_img} style={styles.headerIcon} />
           <View style={styles.userView}>
-            <Text style={styles.nickName}>Cxxy_Lucifer</Text>
+            <Text style={styles.nickName}>GuoguoDad</Text>
             <Text style={styles.userName}>用户名: jd_6062cf674dc4e</Text>
           </View>
           <FastImg url={arrowRight} style={styles.arrowRight} />
@@ -29,7 +29,7 @@ const UserSetting = () => {
           onPress={() => navigation.dispatch(StackActions.push(RoutesEnum.Waterfall, { from: 'UserSetting' }))}
         />
         <View style={styles.greySpace} />
-        <SettingItem title="账户与安全" description={'账户保障可升级'} />
+        <SettingItem title="账户与安全" description={'账户保障可升级'} onPress={() => Toast.info('敬请期待')} />
         <SettingItem title="设置字体大小" description={''} />
         <SettingItem title="字符设置" description={''} />
         <SettingItem title="发票抬头管理" description={'增加增票资质'} />

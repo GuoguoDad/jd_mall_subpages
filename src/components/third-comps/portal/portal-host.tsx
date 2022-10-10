@@ -1,5 +1,5 @@
 import React from 'react'
-import { DeviceEventEmitter, NativeEventEmitter, StyleSheet, View } from 'react-native'
+import { DeviceEventEmitter, EventSubscription, NativeEventEmitter, StyleSheet, View } from 'react-native'
 import PortalManager from './portal-manager'
 
 export type PortalHostProps = {
@@ -67,13 +67,15 @@ export default class PortalHost extends React.Component<PortalHostProps> {
   _nextKey = 0
   _queue: Operation[] = []
   _manager?: PortalManager
+  _addType: EventSubscription | undefined
+  _removeType: EventSubscription | undefined
 
   componentDidMount() {
     const manager = this._manager
     const queue = this._queue
 
-    TopViewEventEmitter.addListener(addType, this._mount)
-    TopViewEventEmitter.addListener(removeType, this._unmount)
+    this._addType = TopViewEventEmitter.addListener(addType, this._mount)
+    this._removeType = TopViewEventEmitter.addListener(removeType, this._unmount)
 
     while (queue.length && manager) {
       const action = queue.pop()
@@ -95,8 +97,8 @@ export default class PortalHost extends React.Component<PortalHostProps> {
     }
   }
   componentWillUnmount() {
-    TopViewEventEmitter.removeListener(addType, this._mount)
-    TopViewEventEmitter.removeListener(removeType, this._unmount)
+    this._addType?.remove()
+    this._removeType?.remove()
   }
   _setManager = (manager?: any) => {
     this._manager = manager

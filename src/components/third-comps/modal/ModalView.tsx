@@ -10,6 +10,7 @@ import {
   ViewStyle
 } from 'react-native'
 import Portal from '../portal'
+import { CallbackOnBackHandler } from './PropsType'
 
 const styles = StyleSheet.create({
   wrap: {
@@ -45,6 +46,8 @@ export interface IModalPropTypes {
   animateAppear?: boolean
   onClose?: () => void
   onAnimationEnd?: (visible: boolean) => void
+  onRequestClose?: CallbackOnBackHandler
+  children?: React.ReactNode
 }
 
 export default class RCModal extends React.Component<IModalPropTypes, any> {

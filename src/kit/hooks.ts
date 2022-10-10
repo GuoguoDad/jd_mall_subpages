@@ -1,7 +1,9 @@
 // @ts-ignore
 import qs from 'qs'
-import { screen } from '@config/screen'
 import { useNavigationState, useRoute } from '@react-navigation/native'
+import { useEffect } from 'react'
+import { BackHandler } from 'react-native'
+import { isAndroid } from './util'
 
 export const useIsFirstRouteInParent = () => {
   const route = useRoute()
@@ -36,4 +38,21 @@ export const useCallOnceInInterval = () => {
       return functionTobeCalled()
     }
   }
+}
+
+/**
+ * 监听安卓返回键
+ * @param fn
+ */
+export const useAndroidBackHandler = (fn: () => any) => {
+  useEffect(() => {
+    if (isAndroid()) {
+      BackHandler.addEventListener('hardwareBackPress', fn)
+    }
+    return () => {
+      if (isAndroid()) {
+        BackHandler.removeEventListener('hardwareBackPress', fn)
+      }
+    }
+  }, [fn])
 }

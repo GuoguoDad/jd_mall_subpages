@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types'
 import React from 'react'
 export interface Locale {
   /** zh_CN */
@@ -94,28 +93,20 @@ export interface Locale {
 }
 export interface LocaleProviderProps {
   locale?: Partial<Locale>
-  children?: React.ReactElement<any>
+  children?: React.ReactNode
 }
 
-export default class LocaleProvider extends React.Component<LocaleProviderProps, any> {
-  static propTypes = {
-    locale: PropTypes.object
-  }
+export const LocaleContext = React.createContext({})
 
-  static childContextTypes = {
-    antLocale: PropTypes.object
-  }
-
-  getChildContext() {
-    return {
-      antLocale: {
-        ...this.props.locale,
-        exist: true
-      }
-    }
-  }
-
-  render() {
-    return React.Children.only(this.props.children)
-  }
+const LocaleProvider = function (props: LocaleProviderProps) {
+  const locale = React.useMemo(() => {
+    return { antLocale: { ...props.locale, exist: true } }
+  }, [props.locale])
+  return (
+    <LocaleContext.Provider value={locale}>
+      {props.children}
+    </LocaleContext.Provider>
+  )
 }
+
+export default React.memo(LocaleProvider)

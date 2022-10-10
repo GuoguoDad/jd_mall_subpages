@@ -1,4 +1,4 @@
-import Toast from './toast'
+import Toast from './third-comps/toast'
 import Scene from './scene'
 import Stepper from './stepper'
 import NoData from './no-data'

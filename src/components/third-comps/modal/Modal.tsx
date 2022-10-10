@@ -1,10 +1,8 @@
-import PropTypes from 'prop-types'
 import React from 'react'
 import {
-  Dimensions,
-  LayoutChangeEvent,
+  KeyboardAvoidingView,
+  Platform,
   StyleProp,
-  StyleSheet,
   Text,
   TextStyle,
   TouchableHighlight,
@@ -12,6 +10,7 @@ import {
   View,
   ViewStyle
 } from 'react-native'
+import { LocaleContext } from '../locale-provider'
 import { WithTheme, WithThemeStyles } from '../style'
 import { getComponentLocale } from '../_util/getLocale'
 import alert from './alert'
@@ -19,19 +18,14 @@ import zh_CN from './locale/zh_CN'
 import RCModal from './ModalView'
 import operation from './operation'
 import prompt from './prompt'
-import { ModalPropsType } from './PropsType'
+import { CallbackOnBackHandler, ModalPropsType } from './PropsType'
 import modalStyles, { ModalStyle } from './style/index'
-
-const maxHeight = StyleSheet.create({
-  maxHeight: {
-    maxHeight: Dimensions.get('window').height
-  }
-}).maxHeight
 
 export interface ModalProps extends ModalPropsType<TextStyle>, WithThemeStyles<ModalStyle> {
   style?: StyleProp<ViewStyle>
-  titleStyle?: TextStyle
   bodyStyle?: StyleProp<ViewStyle>
+  onRequestClose?: CallbackOnBackHandler
+  children?: React.ReactNode
 }
 
 class AntmModal extends React.Component<ModalProps, any> {
@@ -53,23 +47,7 @@ class AntmModal extends React.Component<ModalProps, any> {
   static operation: typeof operation
   static prompt: typeof prompt
 
-  static contextTypes = {
-    antLocale: PropTypes.object
-  }
-  // @ts-ignore
-  root: View | null
-
-  onFooterLayout = (e: LayoutChangeEvent) => {
-    if (this.root) {
-      this.root.setNativeProps({
-        style: [{ paddingBottom: e.nativeEvent.layout.height }, maxHeight]
-      })
-    }
-  }
-
-  saveRoot = (root: any) => {
-    this.root = root
-  }
+  static contextType = LocaleContext
 
   render() {
     const {
@@ -86,7 +64,7 @@ class AntmModal extends React.Component<ModalProps, any> {
       onClose,
       bodyStyle,
       onAnimationEnd,
-      titleStyle = {}
+      onRequestClose
     } = this.props
 
     // tslint:disable-next-line:variable-name
@@ -115,7 +93,7 @@ class AntmModal extends React.Component<ModalProps, any> {
                   const styleMap: {
                     [key: string]: object
                   } = {
-                    cancel: {},
+                    cancel: { color: '#000' },
                     default: {},
                     destructive: { color: 'red' }
                   }
@@ -139,11 +117,7 @@ class AntmModal extends React.Component<ModalProps, any> {
                 </TouchableHighlight>
               )
             })
-            footerDom = (
-              <View style={[btnGroupStyle, styles.footer]} onLayout={this.onFooterLayout}>
-                {footerButtons}
-              </View>
-            )
+            footerDom = <View style={[btnGroupStyle, styles.footer]}>{footerButtons}</View>
           }
 
           let animType = this.props.animationType
@@ -166,18 +140,21 @@ class AntmModal extends React.Component<ModalProps, any> {
                   onClose={onClose}
                   animationType={animType}
                   wrapStyle={transparent ? styles.wrap : undefined}
-                  style={[styles.innerContainer, style]}
+                  style={styles.wrap}
                   visible={visible}
                   onAnimationEnd={onAnimationEnd}
+                  onRequestClose={onRequestClose}
                   animateAppear={animateAppear}
                   maskClosable={maskClosable}
                 >
-                  <View style={maxHeight} ref={this.saveRoot}>
-                    {title ? <Text style={[styles.header, titleStyle]}>{title}</Text> : null}
-                    <View style={[styles.body, bodyStyle]}>{children}</View>
-                    {footerDom}
-                    {closableDom}
-                  </View>
+                  <KeyboardAvoidingView behavior="padding" enabled={Platform.OS === 'ios'}>
+                    <View style={[styles.innerContainer, style]}>
+                      {title ? <Text style={[styles.header]}>{title}</Text> : null}
+                      <View style={[styles.body, bodyStyle]}>{children}</View>
+                      {footerDom}
+                      {closableDom}
+                    </View>
+                  </KeyboardAvoidingView>
                 </RCModal>
               </View>
             )
@@ -199,12 +176,11 @@ class AntmModal extends React.Component<ModalProps, any> {
                   style={[styles.popupContainer, (styles as any)[`popup${aType}`], style]}
                   visible={visible}
                   onAnimationEnd={onAnimationEnd}
+                  onRequestClose={onRequestClose}
                   animateAppear={animateAppear}
                   maskClosable={maskClosable}
                 >
-                  <View ref={this.saveRoot} style={bodyStyle}>
-                    {children}
-                  </View>
+                  <View style={bodyStyle}>{children}</View>
                 </RCModal>
               </View>
             )
@@ -214,7 +190,7 @@ class AntmModal extends React.Component<ModalProps, any> {
           }
           return (
             <View style={styles.container}>
-              <RCModal visible={visible} animationType={animType} onClose={onClose}>
+              <RCModal visible={visible} animationType={animType} onRequestClose={onRequestClose} onClose={onClose}>
                 <View style={style}>{children}</View>
               </RCModal>
             </View>

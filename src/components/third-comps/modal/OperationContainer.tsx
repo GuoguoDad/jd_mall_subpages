@@ -2,12 +2,13 @@ import React from 'react'
 import { TextStyle } from 'react-native'
 import { WithTheme } from '../style'
 import Modal from './Modal'
-import { Action } from './PropsType'
+import { Action, CallbackOnBackHandler } from './PropsType'
 import modalStyle from './style/index'
 
 export interface OperationContainerProps {
   actions: Action<TextStyle>[]
   onAnimationEnd?: (visible: boolean) => void
+  onBackHandler?: CallbackOnBackHandler
 }
 
 export default class OperationContainer extends React.Component<OperationContainerProps, any> {
@@ -16,6 +17,21 @@ export default class OperationContainer extends React.Component<OperationContain
     this.state = {
       visible: true
     }
+  }
+
+  onBackAndroid = () => {
+    const { onBackHandler } = this.props
+    if (typeof onBackHandler === 'function') {
+      const flag = onBackHandler()
+      if (flag) {
+        this.onClose()
+      }
+      return true
+    } else if (this.state.visible) {
+      this.onClose()
+      return true
+    }
+    return false
   }
 
   onClose = () => {
@@ -32,6 +48,7 @@ export default class OperationContainer extends React.Component<OperationContain
       button.onPress = () => {
         const res = orginPress()
         if (res && (res as any).then) {
+          // eslint-disable-next-line no-extra-semi
           ;(res as any).then(() => {
             this.onClose()
           })
@@ -51,6 +68,7 @@ export default class OperationContainer extends React.Component<OperationContain
             visible={this.state.visible}
             onClose={this.onClose}
             onAnimationEnd={onAnimationEnd}
+            onRequestClose={this.onBackAndroid}
             style={styles.operationContainer}
             bodyStyle={styles.operationBody}
             footer={footer}

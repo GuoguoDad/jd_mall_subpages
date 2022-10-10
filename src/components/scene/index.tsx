@@ -1,6 +1,6 @@
 import React, { PropsWithChildren, useState } from 'react'
-import { View, Text, StatusBar, StyleSheet, TouchableOpacity, BackHandler } from 'react-native'
-import { px2Dp, rnClose, screenWidth } from '@kit'
+import { View, Text, StatusBar, StyleSheet, TouchableOpacity } from 'react-native'
+import { px2Dp, rnClose, screenWidth, useAndroidBackHandler } from '@kit'
 import { common } from '@config/common'
 import { FastImg, Provider } from '@comps'
 import { backBlack, backWhite } from '@img'
@@ -30,6 +30,8 @@ const Scene = (props: SceneProps) => {
     return
   }
 
+  useAndroidBackHandler(_backHandler)
+
   const backHandler = backFun ?? _backHandler
 
   const [backgroundColor, setBackgroundColor] = useState(props?.backgroundColor || 'white')
@@ -38,48 +40,55 @@ const Scene = (props: SceneProps) => {
     <>
       <StatusBar backgroundColor="transparent" translucent barStyle={barStyle} />
       <View style={[styles.container]}>
-        <View
-          style={[
-            styles.header,
-            {
-              paddingTop: common.currentValue.statusBarHeight,
-              backgroundColor
-            }
-          ]}
-        >
-          <View style={styles.left}>
-            {hasBack ? (
-              <TouchableOpacity
-                activeOpacity={0.75}
-                accessible
-                onPress={backHandler}
-                style={[styles.container, styles.leftBack]}
-                hitSlop={{ top: 5, bottom: 5, left: 5, right: 20 }}
+        <Provider>
+          <View
+            style={[
+              styles.header,
+              {
+                paddingTop: common.currentValue.statusBarHeight,
+                backgroundColor
+              }
+            ]}
+          >
+            <View style={styles.left}>
+              {hasBack ? (
+                <TouchableOpacity
+                  activeOpacity={0.75}
+                  accessible
+                  onPress={backHandler}
+                  style={[styles.container, styles.leftBack]}
+                  hitSlop={{ top: 5, bottom: 5, left: 5, right: 20 }}
+                >
+                  <FastImg
+                    url={barStyle === 'dark-content' ? backBlack : backWhite}
+                    priority="high"
+                    style={styles.leftIcon}
+                  />
+                </TouchableOpacity>
+              ) : null}
+            </View>
+            {/* 标题 */}
+            <View style={[styles.container, styles.titleView]}>
+              <Text
+                style={[styles.title, { color: barStyle === 'dark-content' ? '#222222' : '#fff' }]}
+                numberOfLines={1}
               >
-                <FastImg
-                  url={barStyle === 'dark-content' ? backBlack : backWhite}
-                  priority="high"
-                  style={styles.leftIcon}
-                />
-              </TouchableOpacity>
-            ) : null}
+                {title}
+              </Text>
+            </View>
+            <View style={styles.left}>{renderRight ? renderRight : null}</View>
           </View>
-          {/* 标题 */}
-          <View style={[styles.container, styles.titleView]}>
-            <Text style={[styles.title, { color: barStyle === 'dark-content' ? '#222222' : '#fff' }]} numberOfLines={1}>
-              {title}
-            </Text>
+          {/* 内容 */}
+          <View
+            style={
+              contentBackgroundColor
+                ? [styles.container, { backgroundColor: contentBackgroundColor }]
+                : styles.container
+            }
+          >
+            {children || null}
           </View>
-          <View style={styles.left}>{renderRight ? renderRight : null}</View>
-        </View>
-        {/* 内容 */}
-        <View
-          style={
-            contentBackgroundColor ? [styles.container, { backgroundColor: contentBackgroundColor }] : styles.container
-          }
-        >
-          {children || null}
-        </View>
+        </Provider>
       </View>
     </>
   )
