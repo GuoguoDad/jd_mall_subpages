@@ -11,16 +11,12 @@ if (!__DEV__) {
   exceptionCatch()
 }
 
-type AppProps = {
-  initRouteUrl: string
-}
-
 /**
  * 页面入口
  * @param props 客户端传入的参数
  * @constructor
  */
-export default function App(props: AppProps) {
+export default function App(props: UrlProps) {
   const { initRouteUrl = `https://com.aries.com?pageCode=rn&bundleName=${appName}&initRouteName=UserSetting` } = props
   const [isReady, setIsReady] = useState<boolean>(false)
 
