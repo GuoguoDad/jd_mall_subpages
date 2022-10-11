@@ -1,6 +1,6 @@
 import 'react-native-gesture-handler'
 import { View } from 'react-native'
-import React, { useEffect, useMemo, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { getCommonInfo, isValidPage, useQueryParams, exceptionCatch } from '@kit'
 import { common } from '@config/common'
 import { UrlProps } from '@type'
@@ -37,13 +37,8 @@ export default function App(props: UrlProps) {
     })
   }, [])
 
-  const PageList = useMemo(
-    () => <Pages finalInitRouteName={finalInitRouteName} initParams={restProps} />,
-    [finalInitRouteName]
-  )
-
   if (!isReady) {
     return <View />
   }
-  return PageList
+  return <Pages initRouteName={finalInitRouteName} initParams={restProps} />
 }

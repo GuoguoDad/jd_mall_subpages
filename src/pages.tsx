@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useMemo } from 'react'
 import { Provider as ReduxProvider } from 'react-redux'
 import { NavigationContainer } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack'
@@ -18,24 +18,29 @@ export enum RoutesEnum {
 const Stack = createStackNavigator()
 
 export const Pages = (props: PageProps) => {
-  const { finalInitRouteName, initParams = {} } = props
+  const { initRouteName, initParams } = props
+
+  const StackApp = useMemo(
+    () => (
+      <NavigationContainer>
+        <Stack.Navigator initialRouteName={initRouteName} screenOptions={{ headerShown: false }}>
+          <Stack.Screen name={RoutesEnum.UnKnowPage} component={UnKnowPage} initialParams={initParams} />
+          <Stack.Screen name={RoutesEnum.UserSetting} component={UserSetting} initialParams={initParams} />
+          <Stack.Screen name={RoutesEnum.Waterfall} component={Waterfall} initialParams={initParams} />
+        </Stack.Navigator>
+      </NavigationContainer>
+    ),
+    [initRouteName]
+  )
 
   return (
     <ReduxProvider store={store}>
-      <PortalProvider>
-        <NavigationContainer>
-          <Stack.Navigator initialRouteName={finalInitRouteName} screenOptions={{ headerShown: false }}>
-            <Stack.Screen name={RoutesEnum.UnKnowPage} component={UnKnowPage} initialParams={initParams} />
-            <Stack.Screen name={RoutesEnum.UserSetting} component={UserSetting} initialParams={initParams} />
-            <Stack.Screen name={RoutesEnum.Waterfall} component={Waterfall} initialParams={initParams} />
-          </Stack.Navigator>
-        </NavigationContainer>
-      </PortalProvider>
+      <PortalProvider>{StackApp}</PortalProvider>
     </ReduxProvider>
   )
 }
 
 export type PageProps = {
-  finalInitRouteName: string
+  initRouteName: string
   initParams: { [key: string]: any }
 }
