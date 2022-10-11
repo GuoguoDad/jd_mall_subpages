@@ -1,6 +1,4 @@
 import navigate from 'react-native-navigate'
-import { useIsFirstRouteInParent } from './hooks'
-import { NavigationProp } from '@react-navigation/core/lib/typescript/src/types'
 
 enum RN_NATIVE_ROUTE {
   // goThreePage = 'https://ns.suning.com?snstoreTypeCode=2b1002&addId=000000000120874428_0000000000_b2b',//打开si级页
@@ -137,18 +135,4 @@ export const rnClose = () => {
   try {
     navigate.close()
   } catch (err) {}
-}
-
-/**
- * rn页面返回
- * @param navigation
- *
- * NavigationScreenProp<NavigationRoute<P>, P>
- */
-export const rnBack = (navigation: NavigationProp<ReactNavigation.RootParamList>) => {
-  if (useIsFirstRouteInParent()) {
-    rnClose()
-    return
-  }
-  navigation.goBack()
 }

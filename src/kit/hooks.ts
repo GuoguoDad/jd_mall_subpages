@@ -1,16 +1,8 @@
 // @ts-ignore
 import qs from 'qs'
-import { useNavigationState, useRoute } from '@react-navigation/native'
 import { useEffect } from 'react'
 import { BackHandler } from 'react-native'
 import { isAndroid } from './util'
-
-export const useIsFirstRouteInParent = () => {
-  const route = useRoute()
-  const isFirstRouteInParent = useNavigationState(state => state.routes[0].key === route.key)
-
-  return isFirstRouteInParent
-}
 
 /**
  * 解析链接携带的参数

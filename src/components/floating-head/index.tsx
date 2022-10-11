@@ -1,97 +1,73 @@
-import React from 'react'
-import {
-  View,
-  Text,
-  StyleSheet,
-  TouchableOpacity,
-  StatusBar,
-  BackHandler,
-  TextProps,
-  StatusBarStyle
-} from 'react-native'
-import { isAndroid, rnBack, px2Dp, HeaderThemeEnum, screenWidth } from '@kit'
+import React, { useEffect, useState } from 'react'
+import { View, Text, StyleSheet, TouchableOpacity, StatusBar, TextProps, StatusBarStyle } from 'react-native'
+import { px2Dp, HeaderThemeEnum, screenWidth, rnClose, useAndroidBackHandler } from '@kit'
 import { backWhite, backBlack } from '@img'
 import { common } from '@config/common'
 import { FastImg } from '@comps'
+import { useNavigation, useNavigationState, useRoute } from '@react-navigation/native'
 
-class FloatingHeader extends React.Component<FloatingHeaderProps, FloatingHeaderState> {
-  constructor(props: FloatingHeaderProps) {
-    super(props)
-    this.state = {
-      statusBarStyle: this.props.statusBarStyle || 'dark-content',
-      title: this.props.title,
-      headerTheme: this.props.headerTheme
+const FloatingHeader = (props: FloatingHeaderProps) => {
+  const route = useRoute()
+  const navigation = useNavigation()
+  const isFirstRouteInParent = useNavigationState(state => state.routes[0].key === route.key)
+
+  const { titleStyle, renderRight } = props
+  const [state, setState] = useState<FloatingHeaderState>({
+    statusBarStyle: props.statusBarStyle || 'dark-content',
+    title: props.title,
+    headerTheme: props.headerTheme
+  })
+
+  const { title, headerTheme, statusBarStyle } = state
+  const leftImg = headerTheme === HeaderThemeEnum.transparent ? backBlack : backBlack
+
+  const backHandler = () => {
+    if (isFirstRouteInParent) {
+      rnClose()
+      return
     }
+    navigation.goBack()
+    return
   }
 
-  componentDidMount() {
-    if (isAndroid()) {
-      BackHandler.addEventListener('hardwareBackPress', this._backHandler)
-    }
-  }
+  useAndroidBackHandler(backHandler)
 
-  componentWillReceiveProps(nextProps: Readonly<FloatingHeaderProps>, nextContext: any) {
-    const { headerTheme, title, statusBarStyle = 'dark-content' } = nextProps
-    if (
-      headerTheme !== this.state.headerTheme ||
-      title !== this.state.title ||
-      this.state.statusBarStyle !== statusBarStyle
-    ) {
-      this.setState({ headerTheme, title, statusBarStyle })
-    }
-  }
+  useEffect(() => {
+    setState({ headerTheme, title, statusBarStyle })
+  }, [props.statusBarStyle, props.title, props.headerTheme])
 
-  componentWillUnmount() {
-    if (isAndroid()) {
-      BackHandler.removeEventListener('hardwareBackPress', this._backHandler)
-    }
-  }
-
-  render() {
-    const { titleStyle, renderRight } = this.props
-    const { title, headerTheme, statusBarStyle } = this.state
-    const leftImg = headerTheme === HeaderThemeEnum.transparent ? backBlack : backBlack
-
-    return (
-      <>
-        <StatusBar backgroundColor="transparent" translucent barStyle={statusBarStyle} />
-        <View
-          style={[
-            styles.header,
-            headerTheme === HeaderThemeEnum.white ? styles.active : null,
-            { paddingTop: common.currentValue.statusBarHeight }
-          ]}
+  return (
+    <>
+      <StatusBar backgroundColor="transparent" translucent barStyle={statusBarStyle} />
+      <View
+        style={[
+          styles.header,
+          headerTheme === HeaderThemeEnum.white ? styles.active : null,
+          { paddingTop: common.currentValue.statusBarHeight }
+        ]}
+      >
+        <TouchableOpacity
+          activeOpacity={0.75}
+          hitSlop={{ top: 20, bottom: 20, left: 20, right: 20 }}
+          onPress={backHandler}
+          style={styles.left}
         >
-          <TouchableOpacity
-            activeOpacity={0.75}
-            hitSlop={{ top: 20, bottom: 20, left: 20, right: 20 }}
-            onPress={this._backHandler}
-            style={styles.left}
-          >
-            <View style={[styles.container, styles.leftBack]}>
-              <FastImg url={leftImg} priority="high" style={styles.leftIcon} />
-            </View>
-          </TouchableOpacity>
-          <View style={[styles.container, styles.titleView]}>
-            <Text
-              style={[styles.title, headerTheme === HeaderThemeEnum.white ? styles.titleActive : null, titleStyle]}
-              numberOfLines={1}
-            >
-              {title}
-            </Text>
+          <View style={[styles.container, styles.leftBack]}>
+            <FastImg url={leftImg} priority="high" style={styles.leftIcon} />
           </View>
-          <View style={styles.left}>{renderRight ? renderRight : null}</View>
+        </TouchableOpacity>
+        <View style={[styles.container, styles.titleView]}>
+          <Text
+            style={[styles.title, headerTheme === HeaderThemeEnum.white ? styles.titleActive : null, titleStyle]}
+            numberOfLines={1}
+          >
+            {title}
+          </Text>
         </View>
-      </>
-    )
-  }
-
-  _backHandler = () => {
-    // const { navigation, onBack = () => {} } = this.props
-    // onBack()
-    // rnBack(navigation)
-    return false
-  }
+        <View style={styles.left}>{renderRight ? renderRight : null}</View>
+      </View>
+    </>
+  )
 }
 
 export default FloatingHeader
