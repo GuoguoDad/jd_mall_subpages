@@ -12,8 +12,8 @@
     "ios": "./node_modules/.bin/react-native run-ios --simulator 'iPhone 14 Pro Max'",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
     "clear:bundle": "rimraf ./bundle/*",
-    "build:ios": "npx srn bundle --entry index.ios.js --outputDir ./bundle/ios/ --platform ios --assetsDest ./bundle/ios/",
-    "build:android": "npx srn bundle --entry index.android.js --outputDir ./bundle/android/ --platform android --assetsDest ./bundle/android/",
+    "build:ios": "npx srn bundle --entry index.js --outputDir ./bundle/ios/ --platform ios --assetsDest ./bundle/ios/",
+    "build:android": "npx srn bundle --entry index.js --outputDir ./bundle/android/ --platform android --assetsDest ./bundle/android/",
     "zip:bundle": "npx srn zip --name index",
     "build": "npm run clear:bundle && npm run build:ios && npm run build:android && npm run zip:bundle",
     "test": "jest"
