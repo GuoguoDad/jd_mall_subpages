@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react'
-import { StyleSheet, TextInput, View, Text, TouchableOpacity } from 'react-native'
-import { px2Dp } from '@kit'
-import { ic_search_grey, ic_close } from '@img'
+import { StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native'
 import { FastImg } from '@comps'
 import { common } from '@config/common'
+import { ic_close, ic_search_grey } from '@img'
+import { px2Dp } from '@kit'
 
 const SearchBar = (props: SearchBarProp) => {
   const {

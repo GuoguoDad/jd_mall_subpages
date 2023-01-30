@@ -1,6 +1,7 @@
-import { Dimensions, Platform, StatusBar, NativeModules } from 'react-native'
-import { isIphoneX, getBottomSpace } from 'react-native-iphone-x-helper'
+import { Dimensions, NativeModules, Platform, StatusBar } from 'react-native'
+import { getBottomSpace, isIphoneX } from 'react-native-iphone-x-helper'
 import { RoutesEnum } from '../pages'
+
 const { StatusBarManager } = NativeModules
 
 /**
@@ -136,7 +137,6 @@ export const hasPassport2LoginFlag = (headers: object) => {
     headers['passport.login.flag'] === 'true'
   )
 }
-
 
 /**
  * cookieStr2Obj

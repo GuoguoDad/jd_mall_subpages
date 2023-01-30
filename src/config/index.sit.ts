@@ -1,5 +1,5 @@
-import { IConfig } from './types'
 import { SNENV } from '@config/utils'
+import { IConfig } from './types'
 
 export class Config implements IConfig {
   BASE_URL = 'https://cvssfmspfsit.cnsuning.com'
@@ -26,7 +26,8 @@ export class Config implements IConfig {
     initRouteUrl: 'https://ns.suning.com/?storeTypeCode=lsyrn&bundleName=coupon-goods&initRouteName=ArbitrageClound',
     env: SNENV.PREXZ,
     appkey: 'fmcg;3.2.0;214',
-    cookieObj: `hm_guid=5907dff0-875a-4a6f-8b4e-c82ece0df965; _df_ud=f4d9e56b-fc17-4fa0-a953-cd4a08f45d9f; experimentation_subject_id=IjAwYjU4OTAzLTQ4MjUtNDE0NC04MmVjLThkMWI5N2M4ODIxNiI%3D--8d464637d3d4294d0425ceaf10560a5a3d40a46d; iar_sncd=0; SN_CITY=10_010_1000000_9017_01_10106_2_0; cityCode=010; districtId=10106; cityId=9017; tradeMA=177; sncnstr=udDBatVydwFo0YrZrun2AQ%3D%3D; _snvd=1648453748192bSaxoADIAc0; isso_ld=true; isso_us=20020013; _snsr=direct%7Cdirect%7C%7C%7C; _snma=1%7C164152254221671011%7C1641522542216%7C1648621115264%7C1649756770921%7C2688%7C41; _snmp=164975677071745092; _snmb=164975677092382740%7C1649756770926%7C1649756770923%7C1; token=baa092b5-9d8f-4e6c-8460-79c7a0ccc5e7; ecologyLevel=ML100100; idsLoginUserIdLastTime=; logonStatus=0; nick=129******07; nick2=129******07; _snck=164975678238254976; custno=7017963441; authId=siPdAhghn48Wip8ZqGAhqITs8W01JDAfQh; secureToken=3D477531EE88CD6511474F251B1B540A; ssotbrd=TGT0vdUF0n77TRlrKlz3CjqipMPzsbLm3TtxkSmIBuW`,
+    cookieObj:
+      'hm_guid=5907dff0-875a-4a6f-8b4e-c82ece0df965; _df_ud=f4d9e56b-fc17-4fa0-a953-cd4a08f45d9f; experimentation_subject_id=IjAwYjU4OTAzLTQ4MjUtNDE0NC04MmVjLThkMWI5N2M4ODIxNiI%3D--8d464637d3d4294d0425ceaf10560a5a3d40a46d; iar_sncd=0; SN_CITY=10_010_1000000_9017_01_10106_2_0; cityCode=010; districtId=10106; cityId=9017; tradeMA=177; sncnstr=udDBatVydwFo0YrZrun2AQ%3D%3D; _snvd=1648453748192bSaxoADIAc0; isso_ld=true; isso_us=20020013; _snsr=direct%7Cdirect%7C%7C%7C; _snma=1%7C164152254221671011%7C1641522542216%7C1648621115264%7C1649756770921%7C2688%7C41; _snmp=164975677071745092; _snmb=164975677092382740%7C1649756770926%7C1649756770923%7C1; token=baa092b5-9d8f-4e6c-8460-79c7a0ccc5e7; ecologyLevel=ML100100; idsLoginUserIdLastTime=; logonStatus=0; nick=129******07; nick2=129******07; _snck=164975678238254976; custno=7017963441; authId=siPdAhghn48Wip8ZqGAhqITs8W01JDAfQh; secureToken=3D477531EE88CD6511474F251B1B540A; ssotbrd=TGT0vdUF0n77TRlrKlz3CjqipMPzsbLm3TtxkSmIBuW',
     authId: 'sim1tSYApCY8LMUueY6QSprLqHjqEu0x5N',
     cityCode: '025',
     districtCode: '03',

@@ -1,16 +1,16 @@
 import React, { LegacyRef } from 'react'
 import {
   FlatList,
-  StyleSheet,
-  View,
-  Text,
-  RefreshControl,
   ListRenderItem,
+  NativeScrollEvent,
   NativeSyntheticEvent,
-  NativeScrollEvent
+  RefreshControl,
+  StyleSheet,
+  Text,
+  View
 } from 'react-native'
 import { NoData, PageFooter } from '@comps'
-import { px2Dp, getIphoneBottomSpace } from '@kit'
+import { getIphoneBottomSpace, px2Dp } from '@kit'
 
 class PageRefreshList<T extends Record<string, any>> extends React.Component<PageListProps<T>, PageListState> {
   constructor(props: PageListProps) {

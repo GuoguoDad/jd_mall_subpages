@@ -1,8 +1,8 @@
 import React from 'react'
-import { StyleSheet, Text, View, TouchableOpacity } from 'react-native'
+import { StyleSheet, Text, TouchableOpacity } from 'react-native'
 import { FastImg } from '@comps'
-import { px2Dp } from '@kit'
 import { arrowRight } from '@img'
+import { px2Dp } from '@kit'
 
 const SettingItem = (props: SettingItemProps) => {
   const { title, description = '', onPress = () => {} } = props

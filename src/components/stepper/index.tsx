@@ -1,7 +1,7 @@
 import React from 'react'
-import { View, StyleSheet, TextInput, TouchableOpacity } from 'react-native'
+import { StyleSheet, TextInput, TouchableOpacity, View } from 'react-native'
 import { FastImg } from '@comps'
-import { subtract_disabled, subtract_active, single_add, add_disabled, add_active } from '@img'
+import { add_active, add_disabled, single_add, subtract_active, subtract_disabled } from '@img'
 
 export default class Stepper extends React.Component<StepperProp> {
   render() {

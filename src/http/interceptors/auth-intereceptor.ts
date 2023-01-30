@@ -1,6 +1,6 @@
 import { AxiosResponse } from 'axios'
-import { hasPassport2LoginFlag, rn2AppLogin } from '@kit'
 import { Toast } from '@comps'
+import { hasPassport2LoginFlag, rn2AppLogin } from '@kit'
 import { BaseResponse } from '../response'
 import { AxiosInterceptor } from './types'
 

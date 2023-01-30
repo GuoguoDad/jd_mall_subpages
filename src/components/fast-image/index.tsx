@@ -1,8 +1,8 @@
 import React from 'react'
-import FastImage, { ImageStyle, Source } from 'react-native-fast-image'
 import { StyleProp } from 'react-native'
-import { httpToHttps } from '@kit'
+import FastImage, { ImageStyle, Source } from 'react-native-fast-image'
 import { default_goods_img } from '@img'
+import { httpToHttps } from '@kit'
 
 class FastImg extends React.Component<FastImageProps, { url: string }> {
   constructor(props: FastImageProps) {

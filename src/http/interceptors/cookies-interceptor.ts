@@ -1,5 +1,5 @@
-import { AxiosRequestInterceptor } from './types'
 import { cookies } from '@config/cookies'
+import { AxiosRequestInterceptor } from './types'
 
 export const CookiesInjectRequestInterceptor: AxiosRequestInterceptor = [
   async req => {

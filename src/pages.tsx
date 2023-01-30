@@ -4,7 +4,6 @@ import { NavigationContainer } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack'
 import { Provider as PortalProvider } from '@comps'
 import { store } from '@store'
-
 import UnKnowPage from '@pages/unknow-page'
 import UserSetting from '@pages/user-settting'
 import Waterfall from '@pages/waterfall-list'

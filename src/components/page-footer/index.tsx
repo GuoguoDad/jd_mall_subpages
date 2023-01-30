@@ -1,7 +1,7 @@
 import React from 'react'
-import { StyleSheet, View, Text, ImageBackground } from 'react-native'
-import { getIphoneBottomSpace, httpToHttps } from '@kit'
+import { ImageBackground, StyleSheet, Text, View } from 'react-native'
 import { bottomBg } from '@img'
+import { getIphoneBottomSpace, httpToHttps } from '@kit'
 
 class PageFooter extends React.Component {
   render() {

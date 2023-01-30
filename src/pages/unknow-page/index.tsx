@@ -1,8 +1,8 @@
 import React from 'react'
-import { StyleSheet, View, Text, BackHandler, TouchableOpacity } from 'react-native'
+import { BackHandler, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import { useNavigation, useNavigationState, useRoute } from '@react-navigation/native'
-import { isAndroid, rnClose } from '@kit'
 import { useFocusEffect } from '@react-navigation/native'
+import { isAndroid, rnClose } from '@kit'
 
 const UnKnowPage = () => {
   const navigation = useNavigation()

@@ -1,5 +1,5 @@
-import { IConfig } from './types'
 import { SNENV } from '@config/utils'
+import { IConfig } from './types'
 
 export class Config implements IConfig {
   BASE_URL = 'http://127.0.0.1:8090'
@@ -26,7 +26,7 @@ export class Config implements IConfig {
     initRouteUrl: 'https://ns.suning.com/?storeTypeCode=lysrn&bundleName=coupon-goods&initRouteName=ArbitrageClound',
     env: SNENV.DEV,
     appkey: 'fmcg;3.2.0;214',
-    cookieObj: ``,
+    cookieObj: '',
     authId: '',
     cityCode: '025',
     districtCode: '03',

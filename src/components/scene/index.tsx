@@ -1,10 +1,10 @@
 import React, { PropsWithChildren, useState } from 'react'
-import { View, Text, StatusBar, StyleSheet, TouchableOpacity } from 'react-native'
-import { px2Dp, rnClose, screenWidth, useAndroidBackHandler } from '@kit'
-import { common } from '@config/common'
-import { FastImg } from '@comps'
-import { backBlack, backWhite } from '@img'
+import { StatusBar, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import { useNavigation, useNavigationState, useRoute } from '@react-navigation/native'
+import { FastImg } from '@comps'
+import { common } from '@config/common'
+import { backBlack, backWhite } from '@img'
+import { px2Dp, rnClose, screenWidth, useAndroidBackHandler } from '@kit'
 
 const Scene = (props: SceneProps) => {
   const {

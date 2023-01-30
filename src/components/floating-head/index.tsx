@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react'
-import { View, Text, StyleSheet, TouchableOpacity, StatusBar, TextProps, StatusBarStyle } from 'react-native'
-import { px2Dp, HeaderThemeEnum, screenWidth, rnClose, useAndroidBackHandler } from '@kit'
-import { backWhite, backBlack } from '@img'
-import { common } from '@config/common'
-import { FastImg } from '@comps'
+import { StatusBar, StatusBarStyle, StyleSheet, Text, TextProps, TouchableOpacity, View } from 'react-native'
 import { useNavigation, useNavigationState, useRoute } from '@react-navigation/native'
+import { FastImg } from '@comps'
+import { common } from '@config/common'
+import { backBlack, backWhite } from '@img'
+import { HeaderThemeEnum, px2Dp, rnClose, screenWidth, useAndroidBackHandler } from '@kit'
 
 const FloatingHeader = (props: FloatingHeaderProps) => {
   const route = useRoute()

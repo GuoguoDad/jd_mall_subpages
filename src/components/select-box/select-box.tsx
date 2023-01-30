@@ -1,6 +1,6 @@
 import React from 'react'
-import { Button } from '@comps'
 import { StyleSheet } from 'react-native'
+import { Button } from '@comps'
 import { px2Dp } from '@kit'
 
 const SelectBox = (props: { isSelect: boolean; text: string; disabled?: boolean; onClick?: () => void }) => {

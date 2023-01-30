@@ -1,10 +1,9 @@
 import React from 'react'
-import { View, Text, StyleSheet, TouchableOpacity ,AppState} from 'react-native'
-import { getIphoneBottomSpace, Msg, rn2Cart } from '@kit'
+import { AppState, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import { FastImg } from '@comps'
-import { order, shopCart, cart, gotop } from '@img'
+import { cart, gotop, order, shopCart } from '@img'
+import { Msg, getIphoneBottomSpace, rn2Cart } from '@kit'
 import { MsgEnum } from '@kit'
-
 import { queryCartNum } from './web-api'
 
 export default class Suspension extends React.Component<SuspensionProps, { cartNum: number }> {
@@ -18,15 +17,15 @@ export default class Suspension extends React.Component<SuspensionProps, { cartN
   componentDidMount() {
     this.queryNum()
     Msg.addListener(MsgEnum.cartNum, this.queryNum)
-    AppState.addEventListener('change',this._onAppStateChange)
+    // AppState.addEventListener('change', this._onAppStateChange)
 
     return () => {
       Msg.removeListener(MsgEnum.cartNum, this.queryNum)
     }
   }
 
-  componentWillUnmount(){
-    AppState.removeEventListener('change',this._onAppStateChange)
+  componentWillUnmount() {
+    // AppState.removeEventListener('change', this._onAppStateChange)
   }
 
   _onAppStateChange = () => {
@@ -58,7 +57,7 @@ export default class Suspension extends React.Component<SuspensionProps, { cartN
   queryNum = () => {
     const { storeCode } = this.props
     queryCartNum(storeCode).then(res => {
-      this.setState({ cartNum: res.data.cartOneCount|| 0 })
+      this.setState({ cartNum: res.data.cartOneCount || 0 })
     })
   }
 }
@@ -117,11 +116,11 @@ const styles = StyleSheet.create({
     paddingBottom: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    minWidth:14
+    minWidth: 14
   },
   amount: {
     fontSize: 12,
-    color: 'white',
+    color: 'white'
     // height: 12,
     // minWidth: 12,
     // textAlign:'center'

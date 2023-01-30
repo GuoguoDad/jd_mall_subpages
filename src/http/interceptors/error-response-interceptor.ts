@@ -1,8 +1,8 @@
 import { AxiosResponse } from 'axios'
-import { isSuccessCode } from '@kit'
 import { Toast } from '@comps'
-import { AxiosInterceptor } from './types'
+import { isSuccessCode } from '@kit'
 import { BaseResponse } from '../response'
+import { AxiosInterceptor } from './types'
 
 export const ErrorResponseInterceptor: AxiosInterceptor<AxiosResponse<BaseResponse<any>>> = [
   // @ts-ignore

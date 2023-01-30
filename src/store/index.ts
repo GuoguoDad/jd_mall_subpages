@@ -1,6 +1,8 @@
-import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit'
 import { useDispatch } from 'react-redux'
 import logger from 'redux-logger'
+
+import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit'
+
 import rootReducer from './rootReducer'
 
 const middleware = __DEV__ ? getDefaultMiddleware().concat(logger) : getDefaultMiddleware()

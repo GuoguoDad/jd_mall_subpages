@@ -1,5 +1,5 @@
-import { IConfig } from './types'
 import { SNENV } from '@config/utils'
+import { IConfig } from './types'
 
 export class Config implements IConfig {
   BASE_URL = 'https://lsysearchprexz.cnsuning.com'

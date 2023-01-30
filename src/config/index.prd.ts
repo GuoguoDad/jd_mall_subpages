@@ -1,5 +1,5 @@
-import { IConfig } from './types'
 import { SNENV } from '@config/utils'
+import { IConfig } from './types'
 
 export class Config implements IConfig {
   BASE_URL = 'https://lsysearch.suning.com'
@@ -25,7 +25,8 @@ export class Config implements IConfig {
     initRouteUrl: 'https://ns.suning.com/?storeTypeCode=1027&bundleName=coupon-goods&initRouteName=CouponGoods',
     env: SNENV.PRD,
     appkey: 'fmcg;3.2.0;214',
-    cookieObj: `_device_session_id=p_2f7fdc7b-12e3-4a39-aecf-558221f9c6f4; hm_guid=8c78ab00-f84f-4f28-800c-7639224305f7; _df_ud=1ecd0e74-13d8-444e-809e-45b494e6b0cf; iar_sncd=0; streetCode=0250199; cityCode=025; districtId=11365; cityId=9173; isScale=false; SN_CITY=100_025_1000173_9173_01_11365_1_1_99_0250199; iar_low=0; _cp_dt=6d28e4f2-80c7-442b-9f34-56ae0a3a39d3-02732; route=b392b5563d7dc8bd72857cc7fe4bb024; tradeMA=194; custLevel=161000000110; ecologyLevel=ML100103; _snms=164068526681777240; totalProdQty=2; _snmc=1; _snsr=direct%7Cdirect%7C%7C%7C; _snma=1%7C163039588375662645%7C1630395883756%7C1642591431504%7C1645146508382%7C141%7C45; _snmp=164514650752118273; _snmb=164514650839952730%7C1645146508423%7C1645146508399%7C1; token=3f55b829-fae8-41ce-a413-be750595fd60; _snzwt=TH7akf17f0a5f8e669GICceb7; authId=siH7lyRkNVyp023FOWAetVYAJEqHvbkw3E; secureToken=930C8ABF663452D375F579115BCEE25D; custno=6195348674; idsLoginUserIdLastTime=; logonStatus=0; nick=%E8%91%A3%E6%9D%B0dj...; nick2=%E8%91%A3%E6%9D%B0dj...; sncnstr=sU4LHaYcaXq5Ftp6gr6QHw%3D%3D; ssotbrd=TGTUwsQ9aExtUzskvhlCozqdTX6qI01G2oBG2MOAeI9; _snck=164514653401021334; _snvd=1645146507311nbyu4XiN89a`,
+    cookieObj:
+      '_device_session_id=p_2f7fdc7b-12e3-4a39-aecf-558221f9c6f4; hm_guid=8c78ab00-f84f-4f28-800c-7639224305f7; _df_ud=1ecd0e74-13d8-444e-809e-45b494e6b0cf; iar_sncd=0; streetCode=0250199; cityCode=025; districtId=11365; cityId=9173; isScale=false; SN_CITY=100_025_1000173_9173_01_11365_1_1_99_0250199; iar_low=0; _cp_dt=6d28e4f2-80c7-442b-9f34-56ae0a3a39d3-02732; route=b392b5563d7dc8bd72857cc7fe4bb024; tradeMA=194; custLevel=161000000110; ecologyLevel=ML100103; _snms=164068526681777240; totalProdQty=2; _snmc=1; _snsr=direct%7Cdirect%7C%7C%7C; _snma=1%7C163039588375662645%7C1630395883756%7C1642591431504%7C1645146508382%7C141%7C45; _snmp=164514650752118273; _snmb=164514650839952730%7C1645146508423%7C1645146508399%7C1; token=3f55b829-fae8-41ce-a413-be750595fd60; _snzwt=TH7akf17f0a5f8e669GICceb7; authId=siH7lyRkNVyp023FOWAetVYAJEqHvbkw3E; secureToken=930C8ABF663452D375F579115BCEE25D; custno=6195348674; idsLoginUserIdLastTime=; logonStatus=0; nick=%E8%91%A3%E6%9D%B0dj...; nick2=%E8%91%A3%E6%9D%B0dj...; sncnstr=sU4LHaYcaXq5Ftp6gr6QHw%3D%3D; ssotbrd=TGTUwsQ9aExtUzskvhlCozqdTX6qI01G2oBG2MOAeI9; _snck=164514653401021334; _snvd=1645146507311nbyu4XiN89a',
     authId: 'siH7lyRkNVyp023FOWAetVYAJEqHvbkw3E',
     cityCode: '025',
     districtCode: '03',

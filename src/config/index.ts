@@ -1,9 +1,9 @@
+import { appEnv } from './env'
 import { ConfigDev } from './index.dev'
-import { ConfigSit } from './index.sit'
 import { ConfigPrd } from './index.prd'
 import { ConfigPreXG } from './index.prexg'
 import { ConfigPreXZ } from './index.prexz'
-import { appEnv } from './env'
+import { ConfigSit } from './index.sit'
 import { IConfig } from './types'
 
 export type EnvHost = Record<string, IConfig>

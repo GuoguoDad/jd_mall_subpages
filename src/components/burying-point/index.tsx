@@ -1,8 +1,7 @@
 import React from 'react'
-import { NavigationInjectedProps } from 'react-navigation'
 import { ScreenProps } from '@type'
 
-export function withBuryingPoint<P extends Omit<Readonly<withBuryingPointProps | NavigationInjectedProps>, ''>>(
+export function withBuryingPoint<P extends Omit<Readonly<withBuryingPointProps>, ''>>(
   WrappedComponent: React.ComponentType<P>
 ) {
   return class extends React.Component<P> {
@@ -18,4 +17,4 @@ export function withBuryingPoint<P extends Omit<Readonly<withBuryingPointProps |
 
 type withBuryingPointProps = {
   screenProps: ScreenProps
-} & NavigationInjectedProps
+}

@@ -1,15 +1,15 @@
 import React, { Component, DetailedReactHTMLElement, LegacyRef } from 'react'
 import {
-  View,
-  ScrollView,
-  StyleSheet,
-  RefreshControl,
-  VirtualizedList,
   LayoutChangeEvent,
-  NativeSyntheticEvent,
   NativeScrollEvent,
+  NativeSyntheticEvent,
+  RefreshControl,
+  ScrollView,
   StyleProp,
-  ViewStyle
+  StyleSheet,
+  View,
+  ViewStyle,
+  VirtualizedList
 } from 'react-native'
 
 export default class WaterfallList<T extends Record<string, any>> extends Component<

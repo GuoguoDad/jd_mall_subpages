@@ -1,11 +1,11 @@
-import 'react-native-gesture-handler'
-import { View } from 'react-native'
 import React, { useEffect, useState } from 'react'
-import { getCommonInfo, isValidPage, useQueryParams, exceptionCatch } from '@kit'
+import { View } from 'react-native'
+import 'react-native-gesture-handler'
 import { common } from '@config/common'
+import { exceptionCatch, getCommonInfo, isValidPage, useQueryParams } from '@kit'
 import { UrlProps } from '@type'
-import { RoutesEnum, Pages } from './pages'
 import { name as appName } from '../app.json'
+import { Pages, RoutesEnum } from './pages'
 
 if (!__DEV__) {
   exceptionCatch()
