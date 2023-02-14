@@ -1,5 +1,5 @@
 import { Dimensions, NativeModules, Platform, StatusBar } from 'react-native'
-import { getBottomSpace, isIphoneX } from 'react-native-iphone-x-helper'
+import { getBottomSpace, isIphoneX } from '@liuhui1990/react-native-iphone-x-helper'
 import { RoutesEnum } from '../pages'
 
 const { StatusBarManager } = NativeModules

@@ -1,10 +1,10 @@
 import React from 'react'
 import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
-import { getBottomSpace } from 'react-native-iphone-x-helper'
 import { StackActions, useNavigation } from '@react-navigation/native'
 import { FastImg, Scene, Toast } from '@comps'
 import { arrowRight, default_goods_img } from '@img'
 import { isIOS, px2Dp } from '@kit'
+import { getBottomSpace } from '@liuhui1990/react-native-iphone-x-helper'
 import SettingItem from '@pages/user-settting/components/item'
 import { RoutesEnum } from '../../pages'
 
