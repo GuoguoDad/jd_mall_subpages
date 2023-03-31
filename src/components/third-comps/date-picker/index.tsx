@@ -1,11 +1,11 @@
 import PropTypes from 'prop-types'
 import React from 'react'
+import { getComponentLocale } from '../_util/getLocale'
 import PickerStyles, { PickerStyle } from '../picker/style/index'
 import { WithTheme, WithThemeStyles } from '../style'
-import { getComponentLocale } from '../_util/getLocale'
+import { DatePickerPropsType } from './PropsType'
 import AntDatePicker from './datepicker'
 import PopupDatePicker from './datepicker/Popup'
-import { DatePickerPropsType } from './PropsType'
 import { formatProps } from './utils'
 
 export interface DatePickerProps extends DatePickerPropsType, WithThemeStyles<PickerStyle> {

@@ -71,3 +71,6 @@ export const ic_grey_arrow_up = 'https://oss.suning.com/sffe/sffe/ic_grey_arrow_
 export const tab_model_close = 'https://oss.suning.com/sffe/sffe/tab-model-close.png'
 export const question_mark = 'https://oss.suning.com/sffe/sffe/question_mark.png'
 export const config_modal_close = 'http://oss.suning.com/sffe/sffe/config_modal_close.png'
+
+export const icon_camera = 'https://oss.suning.com/srcfews/lsywd/violation/icon_camera.png'
+export const icon_clear = 'https://oss.suning.com/srcfews/lsywd/violation/icon_clear.png'

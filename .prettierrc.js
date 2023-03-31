@@ -17,7 +17,7 @@ module.exports = {
   vueIndentScriptAndStyle: false,
   parser: 'typescript',
 
-  importOrder: ["<THIRD_PARTY_MODULES>", "^@react-navigation/(.*)$", "^@reduxjs/(.*)$", "^@comps$", "^@store$", "^@(.*)$",  "^@pages/(.*)$", "^[./]"],
+  importOrder: ["<THIRD_PARTY_MODULES>", "^@react-navigation/(.*)$", "^@liuhui1990/(.*)$", "^@reduxjs/(.*)$", "^@comps$", "^@store$", "^@(.*)$",  "^@pages/(.*)$", "^[./]"],
   importOrderSeparation: false,
   importOrderSortSpecifiers: true
 }

@@ -19,7 +19,7 @@
     "test": "jest"
   },
   "dependencies": {
-    "@liuhui1990/react-native-iphone-x-helper": "^1.4.2",
+    "@liuhui1990/react-native-iphone-x-helper": "^1.4.3",
     "@react-native-picker/picker": "^2.4.2",
     "@react-navigation/native": "^6.0.13",
     "@react-navigation/stack": "^6.3.1",
@@ -37,6 +37,7 @@
     "react-native-exception-handler": "^2.10.10",
     "react-native-fast-image": "^8.6.1",
     "react-native-gesture-handler": "^2.6.2",
+    "react-native-image-picker": "^5.3.1",
     "react-native-navigate": "^0.1.10",
     "react-native-safe-area-context": "^4.3.4",
     "react-native-screens": "^3.17.0",

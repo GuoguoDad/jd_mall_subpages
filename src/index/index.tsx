@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import { View } from 'react-native'
 import 'react-native-gesture-handler'
+import { Host } from '@config'
 import { common } from '@config/common'
 import { exceptionCatch, getCommonInfo, isValidPage, useQueryParams } from '@kit'
 import { UrlProps } from '@type'
-import { name as appName } from '../app.json'
-import { Pages, RoutesEnum } from './pages'
+import { Pages, RoutesEnum } from '../pages'
 
 if (!__DEV__) {
   exceptionCatch()
@@ -17,7 +17,7 @@ if (!__DEV__) {
  * @constructor
  */
 export default function App(props: UrlProps) {
-  const { initRouteUrl = `https://com.aries.com?pageCode=rn&bundleName=${appName}&initRouteName=UserSetting` } = props
+  const { initRouteUrl = Host.config.RN_DEFAULT.initRouteUrl || '' } = props
   const [isReady, setIsReady] = useState<boolean>(false)
 
   //initRouteUrl 是打开页面的入口，由app菜单或者cms配置

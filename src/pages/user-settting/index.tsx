@@ -1,10 +1,11 @@
 import React from 'react'
 import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
+import { ImagePickerResponse, launchCamera, launchImageLibrary } from 'react-native-image-picker'
 import { StackActions, useNavigation } from '@react-navigation/native'
-import { FastImg, Scene, Toast } from '@comps'
+import { getBottomSpace } from '@liuhui1990/react-native-iphone-x-helper'
+import { ActionSheet, FastImg, Scene, Toast } from '@comps'
 import { arrowRight, default_goods_img } from '@img'
 import { isIOS, px2Dp } from '@kit'
-import { getBottomSpace } from '@liuhui1990/react-native-iphone-x-helper'
 import SettingItem from '@pages/user-settting/components/item'
 import { RoutesEnum } from '../../pages'
 
@@ -14,14 +15,14 @@ const UserSetting = () => {
   return (
     <Scene title="账户设置">
       <ScrollView style={styles.container}>
-        <View style={[styles.row, styles.itemView]}>
+        <TouchableOpacity activeOpacity={0.65} style={[styles.row, styles.itemView]} onPress={showPicker}>
           <FastImg url={default_goods_img} style={styles.headerIcon} />
           <View style={styles.userView}>
             <Text style={styles.nickName}>GuoguoDad</Text>
             <Text style={styles.userName}>用户名: jd_6062cf674dc4e</Text>
           </View>
           <FastImg url={arrowRight} style={styles.arrowRight} />
-        </View>
+        </TouchableOpacity>
         <SettingItem
           title="地址管理"
           description={''}
@@ -48,6 +49,47 @@ const UserSetting = () => {
       </ScrollView>
     </Scene>
   )
+
+  function showPicker() {
+    ActionSheet.showActionSheetWithOptions(
+      {
+        options: ['拍照', '从手机相册选择', '取消'],
+        cancelButtonIndex: 2
+      },
+      (buttonIndex: number) => {
+        //拍照
+        if (buttonIndex === 0) {
+          launchCamera({
+            mediaType: 'photo',
+            quality: 0.6
+          })
+            .then((res: ImagePickerResponse) => {
+              if (!res?.errorCode) {
+                // handleUpload(res?.assets![0]?.uri!, res?.assets![0]?.fileName!)
+              }
+            })
+            .catch((err: ImagePickerResponse) => {
+              console.warn('========launchCamera:', err?.errorMessage)
+            })
+        }
+        //从手机相册选择
+        else if (buttonIndex === 1) {
+          launchImageLibrary({
+            mediaType: 'photo',
+            quality: 0.6
+          })
+            .then((res: ImagePickerResponse) => {
+              if (!res?.errorCode) {
+                // handleUpload(res?.assets![0]?.uri!, res?.assets![0]?.fileName!)
+              }
+            })
+            .catch((err: ImagePickerResponse) => {
+              console.warn('========launchImageLibrary:', err?.errorMessage)
+            })
+        }
+      }
+    )
+  }
 }
 
 export default UserSetting
