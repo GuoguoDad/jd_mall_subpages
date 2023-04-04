@@ -64,6 +64,7 @@ const UserSetting = () => {
             quality: 0.6
           })
             .then((res: ImagePickerResponse) => {
+              console.log('========launchCamera res:', res)
               if (!res?.errorCode) {
                 // handleUpload(res?.assets![0]?.uri!, res?.assets![0]?.fileName!)
               }
@@ -79,6 +80,7 @@ const UserSetting = () => {
             quality: 0.6
           })
             .then((res: ImagePickerResponse) => {
+              console.log('========launchImage res:', res)
               if (!res?.errorCode) {
                 // handleUpload(res?.assets![0]?.uri!, res?.assets![0]?.fileName!)
               }
