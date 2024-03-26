@@ -64,7 +64,7 @@
     "metro-react-native-babel-preset": "^0.72.1",
     "patch-package": "^6.5.0",
     "react-test-renderer": "^18.1.0",
-    "srn-cli": "0.0.26",
+    "srn-cli": "^0.0.27",
     "typescript": "^4.8.3"
   },
   "jest": {
